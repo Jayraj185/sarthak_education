@@ -207,10 +207,18 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.all(Get.width/45),
                 child: GridView.builder(
                   itemCount: homeController.homeGridList.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,crossAxisSpacing: 5,mainAxisSpacing: 5,mainAxisExtent: Get.width/3.3),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,crossAxisSpacing: Get.width/70,mainAxisSpacing: Get.width/70,mainAxisExtent: Get.width/3.3),
                     itemBuilder: (context, index) {
                       return Container(
-                        // color: Colors.red,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Color(0XFF5F3285).withOpacity(0.30),width: 2,),
+                          boxShadow: [
+                            BoxShadow(color: Color(0XFFFAFAFA),offset: Offset(-5,-5),spreadRadius: 0.5,blurRadius: 15),
+                            BoxShadow(color: Color(0XFFFAFAFA),offset: Offset(5,5),spreadRadius: 0.5,blurRadius: 15),
+                          ],
+                          borderRadius: BorderRadius.circular(9)
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
