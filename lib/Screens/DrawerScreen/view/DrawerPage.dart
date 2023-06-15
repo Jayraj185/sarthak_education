@@ -14,9 +14,21 @@ class _DrawerPageState extends State<DrawerPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFF5F3285),
+        // backgroundColor: Color(0xFF5F3285),
         body: Stack(
           children: [
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF5F3285),
+                    Color(0xFF30428A),
+                  ]
+                )
+              ),
+            ),
             Align(
               alignment: Alignment.topCenter,
               child: Column(
