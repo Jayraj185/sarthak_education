@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sarthak_education/Screens/DrawerScreen/view/DrawerPage.dart';
 import 'package:sarthak_education/Screens/HomeScreen/controller/HomeController.dart';
 import 'package:sarthak_education/Screens/NotificationScreen/view/NotificationPage.dart';
+import 'package:sarthak_education/Screens/TodayScreen/view/TodayPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -69,8 +70,8 @@ class _HomePageState extends State<HomePage> {
                         "Sarthak Education",
                         style: GoogleFonts.poppins(
                             color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
                       )
                     ],
                   ),
@@ -171,14 +172,15 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              height: Get.width / 1.8,
+              height: Get.width / 1.6,
               width: Get.width,
               // color: Colors.red,
-              margin: EdgeInsets.only(top: Get.width / 75),
+              // margin: EdgeInsets.only(top: Get.width / 100),
               child: CarouselSlider.builder(
                 itemCount: 6,
                 itemBuilder: (context, index, realIndex) {
                   return Container(
+                    // height: Get.width,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -189,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                         borderRadius: BorderRadius.circular(15)),
                     margin: EdgeInsets.symmetric(
-                        horizontal: Get.width / 45, vertical: Get.width / 45),
+                        horizontal: Get.width / 45,),
                     alignment: Alignment.center,
                     child: Icon(Icons.error),
                   );
@@ -209,37 +211,42 @@ class _HomePageState extends State<HomePage> {
                   itemCount: homeController.homeGridList.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,crossAxisSpacing: Get.width/70,mainAxisSpacing: Get.width/70,mainAxisExtent: Get.width/3.3),
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Color(0XFF5F3285).withOpacity(0.30),width: 2,),
-                          boxShadow: [
-                            BoxShadow(color: Color(0XFFFAFAFA),offset: Offset(-5,-5),spreadRadius: 0.5,blurRadius: 15),
-                            BoxShadow(color: Color(0XFFFAFAFA),offset: Offset(5,5),spreadRadius: 0.5,blurRadius: 15),
-                          ],
-                          borderRadius: BorderRadius.circular(9)
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: Get.width/6,
-                              width: Get.width/6,
-                              // color: Colors.white,
-                              alignment: Alignment.center,
-                              child: Image.asset("assets/image/${homeController.homeGridList[index].image}",height: Get.width/9,width: Get.width/9,),
-                            ),
-                            Text(
-                              "${homeController.homeGridList[index].name}",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                color: Color(0xFF5F3285),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500
+                      return InkWell(
+                        onTap: () {
+                          Get.to(homeController.homeGridList[index].page,transition: Transition.rightToLeft,duration: Duration(milliseconds: 600));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Color(0XFF5F3285).withOpacity(0.30),width: 2,),
+                            boxShadow: [
+                              BoxShadow(color: Color(0XFFFAFAFA),offset: Offset(-5,-5),spreadRadius: 0.5,blurRadius: 15),
+                              BoxShadow(color: Color(0XFFFAFAFA),offset: Offset(5,5),spreadRadius: 0.5,blurRadius: 15),
+                            ],
+                            borderRadius: BorderRadius.circular(9)
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: Get.width/6,
+                                width: Get.width/6,
+                                // color: Colors.white,
+                                alignment: Alignment.center,
+                                child: Image.asset("assets/image/${homeController.homeGridList[index].image}",height: Get.width/9,width: Get.width/9,),
                               ),
-                            )
-                          ],
+                              Text(
+                                "${homeController.homeGridList[index].name}",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       );
                     },
